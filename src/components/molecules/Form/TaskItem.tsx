@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { FormCardContext } from '../../contexts/FormCardContext';
 import { ITask } from '../../molecules/Form/interfaces/ITask';
+import { Button } from '../../atoms/Button';
 
 type TaskElmentType  = {
   taskElement: ITask, 
@@ -23,8 +24,8 @@ export const TaskItem = ({ taskElement, index }: TaskElmentType) => {
   return (
     <div>
       <h3 style={{textDecoration: taskElement.done ? 'line-through' : ''}}>{taskElement.name}</h3>
-      <button onClick={() => toggleDoneTask(index)} className='btn btn-secondary'>{taskElement.done ? '✓' : '✗'}</button>
-      <button onClick={() => removeTask(index)} className='btn btn-danger'>🗑</button>
+      <Button buttonType='button' buttonText={taskElement.done ? '✗' : '✓'} buttonClass='btn btn-secondary' onClick={() => toggleDoneTask(index)} />
+      <Button buttonType='button' buttonText='🗑' buttonClass='btn btn-danger' onClick={() => removeTask(index)} />
     </div>
   );
 }
